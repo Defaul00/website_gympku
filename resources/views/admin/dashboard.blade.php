@@ -44,9 +44,9 @@
                 </div>
                 <div class="bg-white/[0.08] px-4 py-4 text-center">
                     <p class="flex items-baseline justify-center gap-0.5 text-2xl font-extrabold">
-                        {{ number_format($activeMemberships, 0, ',', '.') }}<span class="text-xs font-semibold text-white/70">kartu</span>
+                        {{ number_format($activeMemberships, 0, ',', '.') }}<span class="text-xs font-semibold text-white/70">membership</span>
                     </p>
-                    <p class="mt-1 text-[11px] font-medium text-white/70">Kartu Aktif</p>
+                    <p class="mt-1 text-[11px] font-medium text-white/70">Membership Aktif</p>
                 </div>
                 <div class="bg-white/[0.08] px-4 py-4 text-center">
                     <p class="flex items-baseline justify-center gap-0.5 text-2xl font-extrabold">
@@ -61,10 +61,10 @@
     <!-- Stat cards -->
     <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <x-stat-card label="Check-in Hari Ini" :value="$todayCheckIns" :delta="$checkInsDelta" icon="stopwatch" color="indigo" suffix="member" />
-        <x-stat-card label="Membership Aktif" :value="$activeMemberships" icon="card" color="emerald" suffix="kartu" />
+        <x-stat-card label="Membership Aktif" :value="$activeMemberships" icon="card" color="emerald" suffix="membership" />
         <x-stat-card label="Pendapatan Bulan Ini" :value="$monthlyRevenue" :delta="$revenueDelta" icon="wallet" color="amber" currency />
         <x-stat-card label="Booking Pending" :value="$pendingBookings" icon="calendar" color="rose" suffix="sesi" />
-        <x-stat-card label="Expiring 7 Hari" :value="$expiringSoon" icon="alert" color="sky" suffix="kartu" />
+        <x-stat-card label="Expiring 7 Hari" :value="$expiringSoon" icon="alert" color="sky" suffix="membership" />
     </div>
 
     <!-- Charts row -->
@@ -79,7 +79,7 @@
             <div class="relative h-72">
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
                     <p class="text-3xl font-extrabold text-slate-900 dark:text-white">{{ number_format($activeMemberships, 0, ',', '.') }}</p>
-                    <p class="text-xs font-medium text-slate-400">Kartu Aktif</p>
+                    <p class="text-xs font-medium text-slate-400">Membership Aktif</p>
                 </div>
                 <canvas id="membershipChart"></canvas>
             </div>

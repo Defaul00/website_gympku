@@ -12,6 +12,33 @@ class AttendanceService
     {
     }
 
+    public function qrToken(): string
+    {
+        return hash_hmac('sha256', 'gym-attendance-qr', (string) config('app.key'));
+    }
+
+    public function toggle(User $user): array
+    {
+        $attendance = Attendance::query()
+            ->where('user_id', $user->id)
+            ->whereNull('check_out')
+            ->latest('check_in')
+            ->first();
+
+        if ($attendance !== null) {
+            $duration = now()->diffInMinutes($attendance->check_in) ?: 1;
+
+            $attendance->update([
+                'check_out' => now(),
+                'duration_minutes' => (int) $duration,
+            ]);
+
+            return ['action' => 'check_out', 'attendance' => $attendance->fresh()];
+        }
+
+        return ['action' => 'check_in', 'attendance' => $this->checkIn($user)];
+    }
+
     public function checkIn(User $user): Attendance
     {
         $card = $user->activeMemberCard();

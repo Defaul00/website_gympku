@@ -62,39 +62,20 @@
         <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2" data-animate-on-view>
                 <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100">Status Keanggotaan</h2>
-                <p class="mt-0.5 text-xs text-slate-400">Informasi kartu member aktif kamu</p>
+                <p class="mt-0.5 text-xs text-slate-400">Informasi membership aktif kamu</p>
 
                 @if($card)
-                    <div class="mt-6 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 via-brand-500 to-violet-600 p-6 text-white shadow-lg shadow-brand-500/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs font-medium uppercase tracking-wider text-white/70">Physio Gym Membership</p>
-                                <p class="mt-1 text-2xl font-extrabold tracking-tight">{{ $card->membership?->name ?? 'Membership' }}</p>
-                            </div>
-                            <x-icon name="card" class="h-10 w-10 text-white/60" />
-                        </div>
-                        <div class="mt-6 flex items-end justify-between">
-                            <div>
-                                <p class="text-[11px] text-white/60">Nomor Kartu</p>
-                                <p class="font-mono text-lg font-bold tracking-widest">{{ $card->card_number }}</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-[11px] text-white/60">Berlaku hingga</p>
-                                <p class="text-lg font-bold">{{ $card->end_date->translatedFormat('d M Y') }}</p>
-                            </div>
+                    <div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-500/30 dark:bg-emerald-500/10">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Membership Aktif</p>
+                        <p class="mt-2 text-2xl font-extrabold tracking-tight text-emerald-900 dark:text-emerald-100">{{ $card->membership?->name ?? 'Membership' }}</p>
+                        <div class="mt-4 flex items-center justify-between text-sm text-emerald-700 dark:text-emerald-300">
+                            <span>Berlaku hingga</span>
+                            <span class="font-bold">{{ $card->end_date->translatedFormat('d M Y') }}</span>
                         </div>
                     </div>
-                    <a href="{{ route('member-card.print', $card) }}" target="_blank" rel="noopener"
-                       class="mt-4 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700">
-                        <x-icon name="document" class="h-4 w-4" />
-                        Cetak Kartu
-                    </a>
                 @else
-                    <div class="mt-6 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 py-12 text-center dark:border-slate-700">
-                        <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400 dark:bg-slate-800">
-                            <x-icon name="card" class="h-7 w-7" />
-                        </span>
-                        <p class="mt-4 text-sm font-semibold text-slate-600 dark:text-slate-300">Belum ada kartu aktif</p>
+                    <div class="mt-6 rounded-2xl border-2 border-dashed border-slate-200 p-8 text-center dark:border-slate-700">
+                        <p class="text-sm font-semibold text-slate-600 dark:text-slate-300">Belum ada membership aktif</p>
                         <p class="mt-1 text-xs text-slate-400">Hubungi admin gym untuk mengaktifkan keanggotaan kamu.</p>
                     </div>
                 @endif
@@ -135,6 +116,22 @@
                     @endif
                 </div>
             </div>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-6 dark:border-brand-500/30 dark:bg-brand-500/10" data-qr-scanner data-scan-url="{{ route('user.attendance.scan') }}" data-csrf-token="{{ csrf_token() }}">
+            <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <p class="text-sm font-bold text-brand-900 dark:text-brand-100">Scan QR kehadiran</p>
+                    <p class="mt-1 max-w-xl text-sm text-brand-700 dark:text-brand-300">Gunakan kamera untuk check-in saat datang atau check-out saat selesai latihan.</p>
+                    <p data-scan-status class="mt-3 text-sm font-semibold text-slate-600 dark:text-slate-300">Kamera belum dimulai.</p>
+                </div>
+                <button type="button" data-start-scanner
+                        class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/25 transition hover:bg-brand-700">
+                    <i class="fa-solid fa-camera"></i>
+                    Buka Kamera
+                </button>
+            </div>
+            <div data-scanner-region class="mt-5 hidden max-w-md overflow-hidden rounded-2xl bg-slate-950"></div>
         </div>
 
         <!-- Pengumuman & pembayaran -->

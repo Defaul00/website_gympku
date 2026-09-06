@@ -22,16 +22,6 @@
                     </select>
                     @error('user_id')<p class="mt-1 text-xs font-medium text-rose-500">{{ $message }}</p>@enderror
                 </div>
-                <div>
-                    <x-label value="Kartu Member (opsional)" />
-                    <select name="member_card_id" id="member_card_id"
-                            class="mt-1.5 block w-full rounded-xl border-0 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 transition focus:ring-2 focus:ring-brand-500 dark:bg-slate-800 dark:text-slate-100 dark:ring-slate-700">
-                        <option value="">-- Tidak terkait kartu --</option>
-                        @foreach($cards as $card)
-                            <option value="{{ $card->id }}" @selected(old('member_card_id') == $card->id)>{{ $card->user->name }} - {{ $card->membership->name }} (#{{ $card->card_number }})</option>
-                        @endforeach
-                    </select>
-                </div>
                 <x-input name="amount" label="Nominal (Rp)" type="number" min="0" step="any" required />
                 <div>
                     <x-label value="Metode Pembayaran" :required="true" />

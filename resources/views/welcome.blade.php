@@ -122,7 +122,7 @@
         <div class="bento">
           <article class="service-card service-card--lg reveal">
             <div class="service-card__media">
-              <img src="/img/Screenshot 2026-04-25 222110.png" alt="Pelatih mendampingi sesi personal training" />
+              <img src="/img/1.jpg" alt="Pelatih mendampingi sesi personal training" />
             </div>
             <div class="service-card__body">
               <span class="service-card__num">01</span>
@@ -136,7 +136,7 @@
 
           <article class="service-card service-card--sm reveal" style="--delay: .1s">
             <div class="service-card__media">
-              <img src="/img/Screenshot 2026-04-25 222802.png" alt="Kelas kebugaran grup sedang berlangsung" />
+              <img src="/img/2.jpg" alt="Kelas kebugaran grup sedang berlangsung" />
             </div>
             <div class="service-card__body">
               <span class="service-card__num">02</span>
@@ -149,7 +149,7 @@
 
           <article class="service-card service-card--sm reveal">
             <div class="service-card__media">
-              <img src="/img/Screenshot 2026-04-25 222836.png" alt="Makanan sehat untuk panduan nutrisi" />
+              <img src="/img/3.jpg" alt="Makanan sehat untuk panduan nutrisi" />
             </div>
             <div class="service-card__body">
               <span class="service-card__num">03</span>
@@ -173,34 +173,6 @@
               </p>
             </div>
           </article>
-
-          <article class="service-card service-card--full reveal">
-            <div class="service-card__media">
-              <img src="/img/David laid LandScape.png.png" alt="Suasana santai di area wellness gym" />
-            </div>
-            <div class="service-card__body">
-              <span class="service-card__num">05</span>
-              <h3>Wellness Programs</h3>
-              <p>
-                Program yang menjaga keseimbangan mental dan fisik agar kamu bisa konsisten — bukan
-                cuma kuat di minggu pertama.
-              </p>
-            </div>
-          </article>
-
-          <article class="service-card service-card--full reveal" style="--delay: .1s">
-            <div class="service-card__media">
-              <img src="/img/Screenshot 2026-04-25 222940.png" alt="Peralatan angkat beban di dalam gym" />
-            </div>
-            <div class="service-card__body">
-              <span class="service-card__num">06</span>
-              <h3>Modern Equipment</h3>
-              <p>
-                Akses penuh ke peralatan terbaru yang terawat dan dicek rutin. Aman dipakai, tanpa
-                antre panjang saat jam sibuk.
-              </p>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -214,7 +186,7 @@
               <b>2018</b>
               <span>Berdiri di Pekanbaru</span>
             </div>
-            <img src="/img/Screenshot 2026-04-25 223737.png" alt="Suasana lantai utama Physio Gym" />
+            <img src="/img/section.png" alt="Suasana lantai utama Physio Gym" />
           </div>
 
           <div class="about-content">
@@ -415,7 +387,7 @@
                 <i class="bx bx-map"></i>
                 <div>
                   <b>Alamat</b>
-                  <p>Jl. Mangga No.10a, Kel. Jadirejo, Kec. Sukajadi, Kota Pekanbaru</p>
+                  <p><a href="https://maps.app.goo.gl/7baoRYytq1ng9WKCA">Jl. Mangga No.10a, Kel. Jadirejo, Kec. Sukajadi, Kota Pekanbaru</a></p>
                 </div>
               </li>
               <li>

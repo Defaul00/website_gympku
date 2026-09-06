@@ -1,6 +1,10 @@
 @php
     $isDashboard = request()->routeIs('user.dashboard', 'trainer.dashboard', 'admin.dashboard');
     $isProfile = request()->routeIs('profile.edit');
+    $isNotifications = request()->routeIs('user.notifications.*');
+    $unreadNotifications = Auth::check() && Auth::user()->isMember()
+        ? Auth::user()->notifications()->whereNull('read_at')->count()
+        : 0;
     $linkBase = 'rounded-xl px-3 py-2 text-sm transition';
     $linkActive = 'bg-brand-50 font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300';
     $linkIdle = 'font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100';
@@ -17,6 +21,12 @@
         <nav class="ml-8 hidden items-center gap-1 md:flex">
             <a href="{{ route(Auth::user()->homeRoute()) }}" class="{{ $linkBase }} {{ $isDashboard ? $linkActive : $linkIdle }}">Beranda</a>
             <a href="{{ route('profile.edit') }}" class="{{ $linkBase }} {{ $isProfile ? $linkActive : $linkIdle }}">Profil</a>
+            @if(Auth::user()->isMember())
+                <a href="{{ route('user.notifications.index') }}" class="{{ $linkBase }} {{ $isNotifications ? $linkActive : $linkIdle }}">
+                    Notifikasi
+                    @if($unreadNotifications > 0)<span class="ml-1 rounded-full bg-rose-500 px-1.5 py-0.5 text-[10px] font-bold text-white">{{ $unreadNotifications }}</span>@endif
+                </a>
+            @endif
             <a href="/" class="{{ $linkBase }} {{ $linkIdle }}">Lihat Website</a>
         </nav>
 
@@ -55,6 +65,12 @@
         <nav class="flex flex-col gap-1">
             <a href="{{ route(Auth::user()->homeRoute()) }}" class="{{ $linkBase }} {{ $isDashboard ? $linkActive : $linkIdle }}">Beranda</a>
             <a href="{{ route('profile.edit') }}" class="{{ $linkBase }} {{ $isProfile ? $linkActive : $linkIdle }}">Profil</a>
+            @if(Auth::user()->isMember())
+                <a href="{{ route('user.notifications.index') }}" class="{{ $linkBase }} {{ $isNotifications ? $linkActive : $linkIdle }}">
+                    Notifikasi
+                    @if($unreadNotifications > 0)<span class="ml-1 rounded-full bg-rose-500 px-1.5 py-0.5 text-[10px] font-bold text-white">{{ $unreadNotifications }}</span>@endif
+                </a>
+            @endif
             <a href="/" class="{{ $linkBase }} {{ $linkIdle }}">Lihat Website</a>
             <form method="POST" action="{{ route('logout') }}" class="mt-1 border-t border-slate-100 pt-3 dark:border-slate-800">
                 @csrf

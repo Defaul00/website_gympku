@@ -104,14 +104,12 @@
                 <x-report-table :rows="$report['rows']" :columns="[
                     ['key' => 'member', 'label' => 'Member'],
                     ['key' => 'membership', 'label' => 'Paket'],
-                    ['key' => 'card', 'label' => 'No. Kartu'],
                     ['key' => 'start', 'label' => 'Mulai'],
                     ['key' => 'end', 'label' => $type === 'active-memberships' ? 'Berakhir' : 'Expired'],
                     ['key' => 'status', 'label' => 'Status'],
                 ]" :renderer="fn($c) => [
                     'member' => ['text' => $c->user->name, 'sub' => $c->user->email],
                     'membership' => $c->membership->name,
-                    'card' => $c->card_number,
                     'start' => $c->start_date->format('d M Y'),
                     'end' => $c->end_date->format('d M Y'),
                     'status' => ['badge' => $c->status, 'color' => $c->status === 'active' ? 'emerald' : 'rose'],

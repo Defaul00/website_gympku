@@ -16,7 +16,7 @@
             <button type="button"
                     @click="$dispatch('confirm-modal', {
                         title: 'Nonaktifkan Membership',
-                        message: 'Yakin ingin menonaktifkan membership {{ $member->name }}? Seluruh kartu aktif akan ditandai expired.',
+                        message: 'Yakin ingin menonaktifkan membership {{ $member->name }}?',
                         confirmText: 'Nonaktifkan',
                         action: () => document.getElementById('deactivate-member').submit()
                     })"
@@ -37,13 +37,6 @@
             <x-icon name="pencil" class="h-4 w-4" />
             Edit
         </a>
-        @if($activeCard)
-            <a href="{{ route('member-card.print', $activeCard) }}" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-brand-300 hover:text-brand-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:text-brand-400">
-                <x-icon name="document" class="h-4 w-4" />
-                Cetak Kartu
-            </a>
-        @endif
     </x-slot>
 
     <form id="deactivate-member" method="POST" action="{{ route('admin.members.deactivate', $member) }}" class="hidden">
@@ -57,7 +50,7 @@
             </span>
             <div>
                 <p class="font-semibold text-emerald-800 dark:text-emerald-300">Membership Aktif</p>
-                <p class="text-sm text-emerald-700 dark:text-emerald-400">Kartu {{ $activeCard->card_number }} — paket {{ $activeCard->membership->name }}, berlaku hingga {{ $activeCard->end_date->format('d M Y') }}.</p>
+                <p class="text-sm text-emerald-700 dark:text-emerald-400">Paket {{ $activeCard->membership->name }}, berlaku hingga {{ $activeCard->end_date->format('d M Y') }}.</p>
             </div>
         </div>
     @else
@@ -67,7 +60,7 @@
             </span>
             <div>
                 <p class="font-semibold text-rose-800 dark:text-rose-300">Member Belum Aktif</p>
-                <p class="text-sm text-rose-700 dark:text-rose-400">Klik "Aktivasi Membership" untuk memilih paket dan membuat kartu member secara otomatis.</p>
+                <p class="text-sm text-rose-700 dark:text-rose-400">Klik "Aktivasi Membership" untuk memilih paket keanggotaan.</p>
             </div>
         </div>
     @endif
@@ -112,36 +105,6 @@
                 <x-stat-card label="Total Pembayaran" :value="$member->payments->sum('amount')" icon="wallet" color="emerald" currency />
             </div>
 
-            <x-card title="Membership" subtitle="Riwayat kartu & paket membership.">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead class="text-left text-xs uppercase tracking-wider text-slate-400">
-                            <tr><th class="pb-2 font-semibold">No. Kartu</th><th class="pb-2 font-semibold">Paket</th><th class="pb-2 font-semibold">Periode</th><th class="pb-2 font-semibold">Status</th></tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                            @forelse($member->memberCards as $card)
-                                <tr>
-                                    <td class="py-3">
-                                        <div class="flex items-center gap-2">
-                                            <span class="font-mono text-xs font-semibold">{{ $card->card_number }}</span>
-                                            <a href="{{ route('member-card.print', $card) }}" target="_blank" rel="noopener" title="Cetak kartu"
-                                               class="rounded-lg p-1.5 text-slate-400 transition hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10 dark:hover:text-brand-400">
-                                                <x-icon name="document" class="h-3.5 w-3.5" />
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 font-semibold text-slate-700 dark:text-slate-200">{{ $card->membership->name }}</td>
-                                    <td class="py-3 text-slate-500 dark:text-slate-400">{{ $card->start_date->format('d M Y') }} - {{ $card->end_date->format('d M Y') }}</td>
-                                    <td class="py-3"><x-badge :color="$card->status === 'active' ? 'emerald' : 'rose'">{{ $card->status }}</x-badge></td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="4" class="py-4 text-center text-slate-400">Belum ada membership.</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </x-card>
-
             <x-card title="Riwayat Pembayaran" subtitle="Semua transaksi member.">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm">
@@ -183,7 +146,7 @@
                     </span>
                     <div class="min-w-0">
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white">Aktivasi Membership</h3>
-                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Pilih paket untuk {{ $member->name }}. Kartu member akan dibuat otomatis.</p>
+                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Pilih paket membership untuk {{ $member->name }}.</p>
                     </div>
                 </div>
                 <form method="POST" action="{{ route('admin.members.activate', $member) }}" class="space-y-4 border-t border-slate-100 bg-slate-50 px-6 py-5 dark:border-slate-700 dark:bg-slate-900/50">
@@ -198,7 +161,7 @@
                         <button type="submit"
                                 class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700">
                             <x-icon name="check-circle" class="h-4 w-4" />
-                            Aktivasi & Buat Kartu
+                            Aktivasi Membership
                         </button>
                     </div>
                 </form>

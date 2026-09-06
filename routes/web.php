@@ -12,7 +12,8 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\TrainerBookingController;
 use App\Http\Controllers\Admin\TrainerController;
-use App\Http\Controllers\MemberCardController;
+use App\Http\Controllers\MemberAttendanceController;
+use App\Http\Controllers\MemberNotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerDashboardController;
 use App\Http\Controllers\UserDashboardController;
@@ -37,7 +38,7 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::post('members/{member}/deactivate', [MemberController::class, 'deactivate'])->name('members.deactivate');
     Route::resource('memberships', MembershipController::class);
     Route::resource('payments', PaymentController::class)->except(['edit', 'update']);
-    Route::resource('attendances', AttendanceController::class)->except(['edit', 'update', 'show', 'destroy']);
+    Route::resource('attendances', AttendanceController::class)->except(['edit', 'update', 'show', 'destroy', 'store']);
     Route::resource('trainers', TrainerController::class);
     Route::resource('bookings', TrainerBookingController::class);
     Route::resource('equipments', GymEquipmentController::class)->except(['show']);
@@ -51,6 +52,10 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
 
 Route::middleware(['auth', 'verified', 'member'])->group(function () {
     Route::get('/home', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/notifications', [MemberNotificationController::class, 'index'])->name('user.notifications.index');
+    Route::post('/notifications/read-all', [MemberNotificationController::class, 'markAllRead'])->name('user.notifications.read-all');
+    Route::post('/notifications/{notification}/read', [MemberNotificationController::class, 'markRead'])->name('user.notifications.read');
+    Route::post('/attendance/scan', [MemberAttendanceController::class, 'scan'])->name('user.attendance.scan');
 });
 
 Route::middleware(['auth', 'verified', 'trainer'])->prefix('trainer')->name('trainer.')->group(function () {
@@ -58,10 +63,9 @@ Route::middleware(['auth', 'verified', 'trainer'])->prefix('trainer')->name('tra
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/member-cards/{card}/print', [MemberCardController::class, 'print'])->name('member-card.print');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

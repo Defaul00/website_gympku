@@ -45,7 +45,7 @@
                                 <span class="h-2 w-2 rounded-full bg-brand-500"></span>
                             @endif
                         </div>
-                        <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{{ $notification->message }}</p>
+                        <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{{ $notification->body }}</p>
                         <p class="mt-1.5 text-xs text-slate-400">{{ $notification->created_at->diffForHumans() }}</p>
                     </div>
                     @if($notification->read_at === null)

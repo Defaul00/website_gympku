@@ -1,9 +1,9 @@
-<x-admin-layout title="Kehadiran" header="Kelola check-in & check-out member.">
+<x-admin-layout title="Kehadiran" header="Pantau check-in & check-out member.">
     <x-slot name="actions">
         <a href="{{ route('admin.attendances.create') }}"
            class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/25 transition hover:bg-brand-700">
             <x-icon name="plus" class="h-5 w-5" />
-            Check-in / Check-out
+            Tampilkan QR Kehadiran
         </a>
     </x-slot>
 
