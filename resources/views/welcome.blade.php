@@ -80,7 +80,7 @@
             fasilitas modern. Mulai dari Rp 150.000 per bulan.
           </p>
           <div class="hero-cta hero-rise" style="--d: .35s">
-            <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya ingin daftar member di Physio Gym. Tolong info langkahnya.') }}"
+            <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya ingin daftar member di Physio Gym. Tolong info langkahnya.') }}"
               target="_blank" rel="noopener" class="btn btn--primary">
               Join Physio Gym <i class="bx bx-right-arrow-alt"></i>
             </a>
@@ -92,11 +92,11 @@
               <p>Member aktif</p>
             </div>
             <div class="hero-stat">
-              <b>26</b>
+              <b>2</b>
               <p>Pelatih bersertifikat</p>
             </div>
             <div class="hero-stat">
-              <b>7<span>+</span></b>
+              <b>3<span>+</span></b>
               <p>Tahun di Pekanbaru</p>
             </div>
           </div>
@@ -104,7 +104,7 @@
 
         <div class="hero-img hero-rise" style="--d: .3s">
           <img src="/img/IMG_20251016_185042.jpg" alt="Member Physio Gym sedang berlatih di area beban" />
-          <span class="tag"><i class="bx bx-dumbbell"></i> Open 06.00–22.00</span>
+          <span class="tag"><i class="bx bx-dumbbell"></i> Open 08.00–22.00</span>
         </div>
       </div>
     </section>
@@ -142,14 +142,14 @@
               <span class="service-card__num">02</span>
               <h3>Group Classes</h3>
               <p>
-                Kelas yoga, HIIT, dan strength training. Energi kelompok bikin kamu konsisten datang.
+                Strength training. Energi kelompok bikin kamu konsisten datang.
               </p>
             </div>
           </article>
 
           <article class="service-card service-card--sm reveal">
             <div class="service-card__media">
-              <img src="/img/3.jpg" alt="Makanan sehat untuk panduan nutrisi" />
+              <img src="/img/gambar om om berotot.jpg" alt="Makanan sehat untuk panduan nutrisi" />
             </div>
             <div class="service-card__body">
               <span class="service-card__num">03</span>
@@ -162,7 +162,7 @@
 
           <article class="service-card service-card--lg reveal" style="--delay: .1s">
             <div class="service-card__media">
-              <img src="/img/Screenshot 2026-04-25 222919.png" alt="Fisioterapis membantu latihan pemulihan cedera" />
+              <img src="/img/3.jpg" alt="Fisioterapis membantu latihan pemulihan cedera" />
             </div>
             <div class="service-card__body">
               <span class="service-card__num">04</span>
@@ -183,7 +183,7 @@
         <div class="about-grid">
           <div class="about-media reveal">
             <div class="about-badge">
-              <b>2018</b>
+              <b>2023</b>
               <span>Berdiri di Pekanbaru</span>
             </div>
             <img src="/img/section.png" alt="Suasana lantai utama Physio Gym" />
@@ -193,7 +193,7 @@
             <p class="eyebrow reveal">Tentang Kami</p>
             <h2 class="heading reveal" style="--delay: .08s">Berlatih lebih cerdas, <em>bukan lebih keras</em></h2>
             <p class="lead reveal" style="--delay: .16s">
-              Physio Gym berdiri di Pekanbaru sejak 2018 dengan satu misi: membantu setiap orang
+              Physio Gym berdiri di Pekanbaru sejak 2023 dengan satu misi: membantu setiap orang
               berlatih dengan cara yang benar. Kami menggabungkan pelatih berpengalaman, peralatan
               yang terawat, dan komunitas yang saling mendukung. Tanpa gimmick — hanya latihan
               terstruktur dan pendampingan yang jujur.
@@ -205,17 +205,17 @@
                 <p>Member aktif</p>
               </div>
               <div class="about-stat">
-                <b>26</b>
+                <b>2</b>
                 <p>Pelatih bersertifikat</p>
               </div>
               <div class="about-stat">
-                <b>7<span>+</span></b>
+                <b>3<span>+</span></b>
                 <p>Tahun pengalaman</p>
               </div>
             </div>
 
             <div class="about-cta reveal">
-              <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya mau tanya-tanya soal membership Physio Gym.') }}"
+              <a href="https://wa.me/625311716767?text={{ urlencode('Halo, saya mau tanya-tanya soal membership Physio Gym.') }}"
                 target="_blank" rel="noopener" class="btn btn--primary">
                 Konsultasi Gratis <i class="bx bx-right-arrow-alt"></i>
               </a>
@@ -247,7 +247,7 @@
               <li>Kelas grup gratis</li>
               <li>Personal training 1x / minggu</li>
             </ul>
-            <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya ingin ambil paket 1 Bulan (Starter) di Physio Gym.') }}"
+            <a href="https://wa.me/625311716767?text={{ urlencode('Halo, saya ingin ambil paket 1 Bulan (Starter) di Physio Gym.') }}"
               target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Pilih Paket</a>
           </article>
 
@@ -263,7 +263,7 @@
               <li>Konsultasi nutrisi 1x</li>
               <li>Hemat setara Rp 142 rb / bulan</li>
             </ul>
-            <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya ingin ambil paket 3 Bulan (Progress) di Physio Gym.') }}"
+            <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya ingin ambil paket 3 Bulan (Progress) di Physio Gym.') }}"
               target="_blank" rel="noopener" class="btn btn--primary btn--sm">Pilih Paket</a>
           </article>
 
@@ -322,7 +322,7 @@
             <div class="review-author">
               <span class="avatar" aria-hidden="true">RS</span>
               <div>
-                <b>Rizky Saputra</b>
+                <b>Ahmad Maulana</b>
                 <span>Member sejak 2023</span>
               </div>
             </div>
@@ -342,7 +342,7 @@
             <div class="review-author">
               <span class="avatar" aria-hidden="true">DA</span>
               <div>
-                <b>Dewi Anggraini</b>
+                <b>Firdaus Asykar</b>
                 <span>Member aktif</span>
               </div>
             </div>
@@ -362,7 +362,7 @@
             <div class="review-author">
               <span class="avatar" aria-hidden="true">AP</span>
               <div>
-                <b>Andi Pratama</b>
+                <b>Adam Mali Putra</b>
                 <span>Member sejak 2024</span>
               </div>
             </div>
