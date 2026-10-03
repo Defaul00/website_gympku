@@ -256,7 +256,7 @@
             <p class="plan-duration">3 Bulan</p>
             <h3 class="plan-name">Progress</h3>
             <div class="plan-price">
-              <b>Rp 425.000</b><span>/ 3 bulan</span>
+              <b>Rp 420.000</b><span>/ 3 bulan</span>
             </div>
             <ul class="plan-feats">
               <li>Semua fitur paket Starter</li>
@@ -271,7 +271,7 @@
             <p class="plan-duration">6 Bulan</p>
             <h3 class="plan-name">Serious</h3>
             <div class="plan-price">
-              <b>Rp 800.000</b><span>/ 6 bulan</span>
+              <b>Rp 750.000</b><span>/ 6 bulan</span>
             </div>
             <ul class="plan-feats">
               <li>Semua fitur paket Progress</li>
@@ -286,7 +286,7 @@
             <p class="plan-duration">12 Bulan</p>
             <h3 class="plan-name">Unlimited</h3>
             <div class="plan-price">
-              <b>Rp 1.600.000</b><span>/ 12 bulan</span>
+              <b>Rp 1.400.000</b><span>/ 12 bulan</span>
             </div>
             <ul class="plan-feats">
               <li>Semua fitur paket Serious</li>
