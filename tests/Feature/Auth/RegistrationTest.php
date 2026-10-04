@@ -25,12 +25,16 @@ class RegistrationTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'phone' => '081234567890',
+            'gender' => 'female',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
 
         $this->assertAuthenticated();
         $this->assertNull(auth()->user()->email_verified_at);
+        $this->assertSame('081234567890', auth()->user()->phone);
+        $this->assertSame('female', auth()->user()->gender);
         $response->assertRedirect(route('verification.notice'));
 
         $user = auth()->user();

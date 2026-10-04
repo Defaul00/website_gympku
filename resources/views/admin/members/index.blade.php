@@ -40,7 +40,7 @@
                                     <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-violet-600 text-sm font-bold text-white">{{ strtoupper(substr($member->name, 0, 1)) }}</span>
                                     <div>
                                         <p class="font-semibold text-slate-800 dark:text-slate-100">{{ $member->name }}</p>
-                                        <p class="text-xs text-slate-400">#{{ $member->id }} &middot; {{ ucfirst($member->gender ?? '-') }}</p>
+                                        <p class="text-xs text-slate-400">#{{ $member->id }} &middot; {{ match ($member->gender) { 'male' => 'Laki-laki', 'female' => 'Perempuan', default => '-' } }}</p>
                                     </div>
                                 </div>
                             </td>

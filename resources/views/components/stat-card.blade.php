@@ -17,12 +17,12 @@
      data-animate>
     <span class="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br opacity-[0.05] blur-2xl transition-opacity duration-500 group-hover:opacity-15 {{ $gradient }}"></span>
 
-    <div class="relative flex items-start justify-between gap-3">
+    <div class="relative flex items-start justify-between gap-4">
         <div class="min-w-0">
             <p class="text-[13px] font-semibold text-slate-500 dark:text-slate-400">{{ $label }}</p>
-            <p class="mt-2.5 flex items-baseline gap-1">
+            <p class="mt-2.5 flex min-w-0 flex-wrap items-baseline gap-x-1">
                 @if($currency)<span class="text-sm font-bold text-slate-400 dark:text-slate-500">Rp</span>@endif
-                <span class="text-[26px] font-extrabold leading-none tracking-tight text-slate-900 dark:text-white">
+                <span class="break-words text-xl font-extrabold leading-none tracking-tight text-slate-900 dark:text-white sm:text-[26px]">
                     {{ number_format((float) $value, 0, ',', '.') }}
                 </span>
                 @if($suffix)<span class="text-[13px] font-medium text-slate-400">{{ $suffix }}</span>@endif

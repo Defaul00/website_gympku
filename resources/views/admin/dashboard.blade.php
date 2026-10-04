@@ -43,9 +43,7 @@
                     <p class="mt-1 text-[11px] font-medium text-white/70">Check-in Hari Ini</p>
                 </div>
                 <div class="bg-white/[0.08] px-4 py-4 text-center">
-                    <p class="flex items-baseline justify-center gap-0.5 text-2xl font-extrabold">
-                        {{ number_format($activeMemberships, 0, ',', '.') }}<span class="text-xs font-semibold text-white/70">membership</span>
-                    </p>
+                    <p class="text-2xl font-extrabold">{{ number_format($activeMemberships, 0, ',', '.') }}</p>
                     <p class="mt-1 text-[11px] font-medium text-white/70">Membership Aktif</p>
                 </div>
                 <div class="bg-white/[0.08] px-4 py-4 text-center">
@@ -69,7 +67,7 @@
 
     <!-- Charts row -->
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <x-card title="Tren Pendapatan" subtitle="12 bulan terakhir" class="lg:col-span-2">
+        <x-card title="Tren Pendapatan" subtitle="Januari - Desember {{ $revenueYear }}" class="lg:col-span-2">
             <div class="h-72">
                 <canvas id="revenueChart"></canvas>
             </div>
@@ -129,8 +127,8 @@
                 <table class="w-full text-sm">
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                         @forelse($recentPayments as $payment)
-                            <tr class="transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                <td class="py-3">
+                            <tr class="group">
+                                <td class="px-4 py-3 transition-colors group-hover:bg-slate-50 first:rounded-l-xl dark:group-hover:bg-slate-800/50">
                                     <p class="flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-100">
                                         <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-bold text-slate-500 dark:bg-slate-800 dark:text-slate-300">
                                             {{ strtoupper(substr($payment->user->name, 0, 1)) }}
@@ -139,7 +137,7 @@
                                     </p>
                                     <p class="mt-0.5 pl-10 text-xs text-slate-400">{{ $payment->method }} &middot; {{ $payment->paid_at->diffForHumans() }}</p>
                                 </td>
-                                <td class="py-3 text-right">
+                                <td class="px-4 py-3 text-right transition-colors group-hover:bg-slate-50 last:rounded-r-xl dark:group-hover:bg-slate-800/50">
                                     <p class="font-bold text-slate-800 dark:text-slate-100">Rp {{ number_format($payment->amount, 0, ',', '.') }}</p>
                                     <p class="mt-1"><x-badge :color="$payment->status === 'paid' ? 'emerald' : 'amber'">{{ $payment->status }}</x-badge></p>
                                 </td>

@@ -42,19 +42,19 @@ class DashboardController extends Controller
             ? round((($monthlyRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100)
             : ($monthlyRevenue > 0 ? 100 : null);
 
+        $revenueYearStart = now()->startOfYear();
+        $revenueMonths = collect(range(0, 11))
+            ->map(fn ($i) => $revenueYearStart->copy()->addMonths($i));
+
         $revenueTrend = Payment::query()
             ->where('status', 'paid')
-            ->where('paid_at', '>=', now()->subMonths(11)->startOfMonth())
+            ->whereBetween('paid_at', [$revenueYearStart, $revenueYearStart->copy()->endOfYear()])
             ->get()
             ->groupBy(fn (Payment $p) => $p->paid_at->format('Y-m'))
             ->map(fn ($group) => (float) $group->sum('amount'));
 
-        $revenueLabels = collect(range(11, 0))->map(fn ($i) => now()->subMonths($i)->translatedFormat('M'));
-        $revenueData = $revenueLabels->map(function ($label, $i) use ($revenueTrend) {
-            $key = now()->subMonths(11 - $i)->format('Y-m');
-
-            return $revenueTrend[$key] ?? 0;
-        });
+        $revenueLabels = $revenueMonths->map(fn (Carbon $month) => $month->translatedFormat('M'));
+        $revenueData = $revenueMonths->map(fn (Carbon $month) => $revenueTrend[$month->format('Y-m')] ?? 0);
 
         $attendanceTrend = Attendance::where('check_in', '>=', now()->subDays(13)->startOfDay())
             ->get()
@@ -76,6 +76,7 @@ class DashboardController extends Controller
 
         $recentAttendances = Attendance::with('user')->latest('check_in')->take(6)->get();
         $recentPayments = Payment::with('user')->latest('paid_at')->take(6)->get();
+        $revenueYear = $revenueYearStart->year;
 
         return view('admin.dashboard', compact(
             'todayCheckIns',
@@ -83,6 +84,7 @@ class DashboardController extends Controller
             'activeMemberships',
             'monthlyRevenue',
             'revenueDelta',
+            'revenueYear',
             'pendingBookings',
             'expiringSoon',
             'revenueLabels',

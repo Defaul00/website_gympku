@@ -30,6 +30,8 @@
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -38,6 +40,7 @@ body {
     line-height: 1.7;
     background: var(--bg);
     color: var(--text);
+    max-width: 100%;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -224,9 +227,7 @@ section[id] {
 }
 
 .header.scrolled {
-    background: rgba(10, 10, 12, 0.85);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    background: rgba(10, 10, 12, 0.96);
     border-bottom-color: var(--border);
     padding-block: 1.2rem;
 }
@@ -299,6 +300,10 @@ section[id] {
     display: none;
 }
 
+.nav-auth a::after {
+    display: none;
+}
+
 .nav-toggle {
     display: none;
     background: none;
@@ -308,6 +313,10 @@ section[id] {
     line-height: 1;
     cursor: pointer;
     padding: 0.4rem;
+}
+
+.nav-backdrop {
+    display: none;
 }
 
 .hero {
@@ -1075,6 +1084,10 @@ section[id] {
 }
 
 @media (max-width: 900px) {
+    body.nav-open {
+        overflow: hidden;
+    }
+
     .nav {
         position: fixed;
         top: 0;
@@ -1086,12 +1099,29 @@ section[id] {
         padding: 10rem 3.2rem 3.2rem;
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        z-index: 999;
+        z-index: 1002;
         overflow-y: auto;
     }
 
     .nav.open {
         transform: translateX(0);
+    }
+
+    .nav-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1001;
+        border: 0;
+        background: rgba(2, 6, 23, 0.65);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .nav-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .nav ul {
@@ -1113,10 +1143,16 @@ section[id] {
         border-top: 1px solid var(--border);
     }
 
+    .nav-auth .btn {
+        width: 100%;
+        padding: 1.1rem 2rem;
+        font-size: 1.35rem;
+    }
+
     .nav-toggle {
         display: block;
         position: relative;
-        z-index: 1001;
+        z-index: 1003;
     }
 
     .header-actions {
@@ -1145,8 +1181,71 @@ section[id] {
 }
 
 @media (max-width: 680px) {
+    .container {
+        width: calc(100% - 3.2rem);
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hero .container > *,
+    .about-grid > *,
+    .bento > *,
+    .plans-grid > *,
+    .reviews-grid > *,
+    .contact-grid > * {
+        min-width: 0;
+    }
+
+    .hero-watermark {
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(10rem, 30vw, 18rem);
+        text-align: center;
+        transform: translateY(-50%);
+    }
+
+    .about-media::after {
+        right: 0;
+    }
+
+    .about-badge {
+        right: 0;
+    }
+
+    .section {
+        padding-block: 6.4rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-block: 11rem 5rem;
+    }
+
+    .hero .container {
+        gap: 4.4rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(4.8rem, 14vw, 7rem);
+    }
+
+    .hero .sub {
+        font-size: 1.6rem;
+    }
+
+    .hero-cta {
+        gap: 1rem;
+    }
+
+    .hero-cta .btn {
+        flex: 1 1 100%;
+    }
+
     .plans-grid {
         grid-template-columns: 1fr;
+        gap: 1.6rem;
+        margin-top: 3.6rem;
     }
 
     .service-card--sm,
@@ -1154,26 +1253,106 @@ section[id] {
         grid-column: span 12;
     }
 
+    .bento,
+    .reviews-grid {
+        gap: 1.6rem;
+        margin-top: 3.6rem;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
     }
 
     .hero-stats {
-        gap: 2.8rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+    }
+
+    .hero-stat p,
+    .about-stat p {
+        overflow-wrap: anywhere;
+    }
+
+    .hero-stat b,
+    .about-stat b {
+        font-size: 3.6rem;
+    }
+
+    .hero-stat p,
+    .about-stat p {
+        font-size: 1.1rem;
+        letter-spacing: 0.06em;
     }
 
     .hero-img .tag {
         left: 1.6rem;
+        bottom: 1.6rem;
+        padding: 1rem 1.4rem;
     }
 
     .contact-form {
-        padding: 2.6rem;
+        padding: 2rem;
+    }
+
+    .contact-grid {
+        gap: 3.2rem;
+        margin-top: 3.6rem;
+    }
+
+    .contact-list {
+        gap: 2rem;
+        margin-top: 2.4rem;
+    }
+
+    .contact-list p,
+    .contact-list a {
+        overflow-wrap: anywhere;
+    }
+
+    .contact-form .btn {
+        width: 100%;
+    }
+
+    .review-card {
+        padding: 2.4rem;
+    }
+
+    .review-card--featured blockquote p {
+        font-size: 1.9rem;
     }
 
     .footer .container {
         flex-direction: column;
         align-items: flex-start;
         gap: 2.4rem;
+    }
+
+    .footer-nav {
+        gap: 1.6rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .nav {
+        width: min(32rem, 90vw);
+        padding-inline: 2.4rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(4.4rem, 13vw, 5rem);
+    }
+
+    .about-stats {
+        gap: 1rem;
+    }
+
+    .plan-card {
+        padding-inline: 2rem;
+    }
+
+    .review-card {
+        padding: 2rem;
     }
 }
 

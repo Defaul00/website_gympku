@@ -1,8 +1,16 @@
 const header = document.querySelector('.header');
 const nav = document.querySelector('.nav');
 const navToggle = document.querySelector('#nav-toggle');
+const navBackdrop = document.querySelector('#nav-backdrop');
 const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 const sections = [...document.querySelectorAll('section[id]')];
+
+const setNavOpen = (open) => {
+    nav.classList.toggle('open', open);
+    navBackdrop.classList.toggle('open', open);
+    document.body.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
 
 const onScroll = () => {
     header.classList.toggle('scrolled', window.scrollY > 20);
@@ -29,17 +37,25 @@ onScroll();
 scrollSpy();
 
 navToggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    setNavOpen(!nav.classList.contains('open'));
 });
 
 navLinks.forEach((link) => {
-    link.addEventListener('click', () => nav.classList.remove('open'));
+    link.addEventListener('click', () => setNavOpen(false));
 });
+
+navBackdrop.addEventListener('click', () => setNavOpen(false));
 
 document.addEventListener('click', (e) => {
     if (nav.classList.contains('open') && !nav.contains(e.target) && !navToggle.contains(e.target)) {
-        nav.classList.remove('open');
+        setNavOpen(false);
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+        setNavOpen(false);
+        navToggle.focus();
     }
 });
 

@@ -75,8 +75,7 @@
                     <p class="text-sm text-slate-400">{{ $member->email }}</p>
                     <dl class="mt-4 space-y-2 text-sm">
                         <div class="flex justify-between"><dt class="text-slate-400">Nomor HP</dt><dd class="font-semibold text-slate-700 dark:text-slate-200">{{ $member->phone ?? '-' }}</dd></div>
-                        <div class="flex justify-between"><dt class="text-slate-400">Jenis Kelamin</dt><dd class="font-semibold text-slate-700 dark:text-slate-200">{{ ucfirst($member->gender ?? '-') }}</dd></div>
-                        <div class="flex justify-between"><dt class="text-slate-400">Tgl Lahir</dt><dd class="font-semibold text-slate-700 dark:text-slate-200">{{ $member->birth_date?->format('d M Y') ?? '-' }}</dd></div>
+                        <div class="flex justify-between"><dt class="text-slate-400">Jenis Kelamin</dt><dd class="font-semibold text-slate-700 dark:text-slate-200">{{ match ($member->gender) { 'male' => 'Laki-laki', 'female' => 'Perempuan', default => '-' } }}</dd></div>
                         <div class="flex justify-between"><dt class="text-slate-400">Bergabung</dt><dd class="font-semibold text-slate-700 dark:text-slate-200">{{ $member->created_at->format('d M Y') }}</dd></div>
                     </dl>
                 </div>
@@ -100,14 +99,14 @@
         </div>
 
         <div class="space-y-6 lg:col-span-2">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <x-stat-card label="Total Check-in" :value="$member->attendances->count()" icon="fingerprint" color="brand" />
                 <x-stat-card label="Total Pembayaran" :value="$member->payments->sum('amount')" icon="wallet" color="emerald" currency />
             </div>
 
             <x-card title="Riwayat Pembayaran" subtitle="Semua transaksi member.">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
+                    <table class="w-full min-w-[36rem] text-sm">
                         <thead class="text-left text-xs uppercase tracking-wider text-slate-400">
                             <tr><th class="pb-2 font-semibold">Referensi</th><th class="pb-2 font-semibold">Metode</th><th class="pb-2 font-semibold">Tanggal</th><th class="pb-2 text-right font-semibold">Nominal</th></tr>
                         </thead>

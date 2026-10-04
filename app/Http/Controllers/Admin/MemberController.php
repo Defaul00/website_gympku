@@ -41,8 +41,6 @@ class MemberController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'phone' => ['nullable', 'string', 'max:20'],
             'gender' => ['nullable', 'in:male,female'],
-            'birth_date' => ['nullable', 'date'],
-            'address' => ['nullable', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -101,8 +99,6 @@ class MemberController extends Controller
             'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($member->id)],
             'phone' => ['nullable', 'string', 'max:20'],
             'gender' => ['nullable', 'in:male,female'],
-            'birth_date' => ['nullable', 'date'],
-            'address' => ['nullable', 'string'],
         ]);
 
         $member->update($data);

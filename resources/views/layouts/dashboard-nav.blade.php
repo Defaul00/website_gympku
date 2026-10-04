@@ -13,9 +13,7 @@
 <header x-data="{ open: false }" class="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/80">
     <div class="mx-auto flex h-16 w-full max-w-6xl items-center gap-4 px-4 sm:px-6">
         <a href="{{ route(Auth::user()->homeRoute()) }}" class="flex items-center">
-            <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Physio<span class="text-brand-600 dark:text-brand-400">Gym</span>
-            </span>
+            <img src="{{ asset('img/physio-gym.svg') }}" alt="Physio Gym" class="h-9 w-auto">
         </a>
 
         <nav class="ml-8 hidden items-center gap-1 md:flex">

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="Masuk atau daftar ke Physio Gym — pusat kebugaran di Pekanbaru.">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('img/physio-gym.svg') }}?v=2">
 
         <title>{{ config('app.name', 'Physio Gym') }}</title>
 
@@ -30,9 +31,7 @@
         <main id="main-content" class="relative flex min-h-screen flex-col items-center justify-center px-4 py-10">
             <!-- Brand -->
             <a href="/" class="mb-8 block" data-animate>
-                <span class="font-display text-2xl font-bold uppercase tracking-wide text-white">
-                    Physio<span class="text-brand-400">Gym</span>
-                </span>
+                <img src="{{ asset('img/physio-gym.svg') }}" alt="Physio Gym" class="h-12 w-auto">
             </a>
 
             <!-- Card -->

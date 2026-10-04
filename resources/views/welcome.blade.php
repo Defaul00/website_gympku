@@ -10,7 +10,7 @@
   <meta property="og:description" content="Latihan terstruktur, pelatih bersertifikat, dan fasilitas modern. Berlatih lebih cerdas, bukan lebih keras." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/img/IMG_20251016_185042.jpg" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="{{ asset('img/physio-gym.svg') }}?v=2" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,6 +48,7 @@
           @endauth
         </div>
       </nav>
+      <button class="nav-backdrop" id="nav-backdrop" type="button" aria-label="Tutup menu navigasi"></button>
 
       <div class="header-actions">
         @guest

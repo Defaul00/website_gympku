@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Beranda member Physio Gym — pantau keanggotaan, kehadiran, dan capaianmu.">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('img/physio-gym.svg') }}?v=2">
     <title>Beranda - {{ config('app.name', 'Physio Gym') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,20 @@
     @include('layouts.dashboard-nav')
 
     <main id="main-content" class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+        @php
+            $formattedTotalSpent = number_format($totalSpent, 0, ',', '.');
+            $compactUnits = ['rb', 'jt', 'M', 'T', 'P', 'E', 'Z', 'Y'];
+
+            if ($totalSpent >= 1_000_000) {
+                $unitIndex = (int) floor(log($totalSpent, 1000)) - 2;
+                $compactTotalSpent = isset($compactUnits[$unitIndex])
+                    ? number_format($totalSpent / (1000 ** ($unitIndex + 2)), 1, ',', '.') . ' ' . $compactUnits[$unitIndex]
+                    : number_format($totalSpent / (10 ** floor(log10($totalSpent))), 1, ',', '.') . 'e' . (int) floor(log10($totalSpent));
+            } else {
+                $compactTotalSpent = $formattedTotalSpent;
+            }
+        @endphp
+
         <!-- Hero -->
         <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 via-brand-500 to-violet-600 p-6 text-white shadow-xl shadow-brand-500/20 sm:p-8" data-animate>
             <span class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl"></span>
@@ -41,18 +56,21 @@
                         Selamat datang di Physio Gym. Pantau keanggotaan, kehadiran, dan capaian kamu di sini.
                     </p>
                 </div>
-                <div class="grid shrink-0 grid-cols-3 gap-3">
-                    <div class="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-center backdrop-blur-sm">
-                        <p class="text-2xl font-extrabold">{{ $checkInsThisMonth }}</p>
-                        <p class="mt-0.5 text-[11px] font-medium text-white/75">Check-in Bulan Ini</p>
+                <div class="grid w-full grid-cols-3 gap-2 sm:gap-3 lg:w-auto lg:shrink-0">
+                    <div class="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-2 py-3 text-center backdrop-blur-sm sm:px-4">
+                        <p class="text-xl font-extrabold sm:text-2xl">{{ $checkInsThisMonth }}</p>
+                        <p class="mt-0.5 text-[11px] font-medium leading-tight text-white/75"><span class="block">Check-in</span><span class="block">Bulan Ini</span></p>
                     </div>
-                    <div class="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-center backdrop-blur-sm">
-                        <p class="text-2xl font-extrabold">{{ $card ? $daysLeft : 0 }}</p>
-                        <p class="mt-0.5 text-[11px] font-medium text-white/75">Hari Tersisa</p>
+                    <div class="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-2 py-3 text-center backdrop-blur-sm sm:px-4">
+                        <p class="text-xl font-extrabold sm:text-2xl">{{ $card ? $daysLeft : 0 }}</p>
+                        <p class="mt-0.5 text-[11px] font-medium leading-tight text-white/75"><span class="block">Hari</span><span class="block">Tersisa</span></p>
                     </div>
-                    <div class="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-center backdrop-blur-sm">
-                        <p class="text-2xl font-extrabold">{{ number_format($totalSpent, 0, ',', '.') }}</p>
-                        <p class="mt-0.5 text-[11px] font-medium text-white/75">Total Bayar</p>
+                    <div class="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-2 py-3 text-center backdrop-blur-sm sm:px-4">
+                        <p class="whitespace-nowrap text-[clamp(0.75rem,4vw,1.125rem)] font-extrabold sm:text-2xl" title="Rp {{ $formattedTotalSpent }}">
+                            <span class="sm:hidden">{{ $compactTotalSpent }}</span>
+                            <span class="hidden sm:inline">{{ $formattedTotalSpent }}</span>
+                        </p>
+                        <p class="mt-0.5 text-[11px] font-medium leading-tight text-white/75"><span class="block">Total</span><span class="block">Bayar</span></p>
                     </div>
                 </div>
             </div>
