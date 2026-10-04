@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Panel manajemen Physio Gym — kelola member, pembayaran, kehadiran, dan laporan.">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('img/physio-gym.svg') }}?v=2">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('img/physio-gym.png') }}?v=2">
     <title>{{ $title }} - {{ config('app.name', 'Physio Gym') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
