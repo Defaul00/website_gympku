@@ -1,4 +1,8 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -R * ~/public_html
+    - export DEPLOYPATH=$HOME/website_gympku
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R . $DEPLOYPATH
+    - cd $DEPLOYPATH && /usr/local/bin/composer install --no-dev --optimize-autoloader
+    - cd $DEPLOYPATH && /usr/local/bin/php artisan config:cache
