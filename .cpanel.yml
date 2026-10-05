@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -R * ~/public_html
-
+    - export DEPLOYPATH=$HOME/physiogym.web.id
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.env' --exclude='storage' --exclude='public/build' ./ $DEPLOYPATH/
