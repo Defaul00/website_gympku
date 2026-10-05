@@ -1,1 +1,1 @@
-<img src="{{ asset('img/physio-gym.svg') }}" alt="Physio Gym" {{ $attributes }}>
+<img src="{{ asset('img/physio-gym.png') }}" alt="Physio Gym" {{ $attributes }}>
