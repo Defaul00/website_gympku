@@ -216,7 +216,7 @@
             </div>
 
             <div class="about-cta reveal">
-              <a href="https://wa.me/625311716767?text={{ urlencode('Halo, saya mau tanya-tanya soal membership Physio Gym.') }}"
+              <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya mau tanya-tanya soal membership Physio Gym.') }}"
                 target="_blank" rel="noopener" class="btn btn--primary">
                 Konsultasi Gratis <i class="bx bx-right-arrow-alt"></i>
               </a>
@@ -248,7 +248,7 @@
               <li>Kelas grup gratis</li>
               <li>Personal training 1x / minggu</li>
             </ul>
-            <a href="https://wa.me/625311716767?text={{ urlencode('Halo, saya ingin ambil paket 1 Bulan (Starter) di Physio Gym.') }}"
+            <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya ingin ambil paket 1 Bulan (Starter) di Physio Gym.') }}"
               target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Pilih Paket</a>
           </article>
 

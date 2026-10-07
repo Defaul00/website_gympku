@@ -1153,6 +1153,7 @@ section[id] {
         display: block;
         position: relative;
         z-index: 1003;
+        margin-left: auto;
     }
 
     .header-actions {
