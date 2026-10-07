@@ -279,7 +279,7 @@
               <li>Personal training 2x / minggu</li>
               <li>Evaluasi progres bulanan</li>
             </ul>
-            <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya ingin ambil paket 6 Bulan (Serious) di Physio Gym.') }}"
+            <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya ingin ambil paket 6 Bulan (Serious) di Physio Gym.') }}"
               target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Pilih Paket</a>
           </article>
 
@@ -294,7 +294,7 @@
               <li>Konsultasi fisioterapi gratis</li>
               <li>Freeze membership maks. 14 hari</li>
             </ul>
-            <a href="https://wa.me/62895618046923?text={{ urlencode('Halo, saya ingin ambil paket 12 Bulan (Unlimited) di Physio Gym.') }}"
+            <a href="https://wa.me/6285311716767?text={{ urlencode('Halo, saya ingin ambil paket 12 Bulan (Unlimited) di Physio Gym.') }}"
               target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Pilih Paket</a>
           </article>
         </div>
@@ -464,7 +464,7 @@
       </nav>
 
       <div class="social">
-        <a href="https://wa.me/62895618046923" target="_blank" rel="noopener" aria-label="WhatsApp Physio Gym">
+        <a href="https://wa.me/6285311716767" target="_blank" rel="noopener" aria-label="WhatsApp Physio Gym">
           <i class="bx bxl-whatsapp"></i>
         </a>
         <a href="https://www.instagram.com/physiogym_pku" target="_blank" rel="noopener"
