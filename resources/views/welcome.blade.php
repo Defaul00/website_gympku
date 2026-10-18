@@ -321,10 +321,14 @@
               </p>
             </blockquote>
             <div class="review-author">
-              <span class="avatar" aria-hidden="true">RS</span>
+              <img
+                class="avatar"
+                src="{{ asset('img/oneworks-avatar-cat-256.svg') }}"
+                alt="Foto profil Jamal"
+              />
               <div>
-                <b>Ahmad Maulana</b>
-                <span>Member sejak 2023</span>
+                <b>Jamal Azril</b>
+                <span>Member</span>
               </div>
             </div>
           </article>
@@ -341,10 +345,14 @@
               </p>
             </blockquote>
             <div class="review-author">
-              <span class="avatar" aria-hidden="true">DA</span>
+              <img
+                class="avatar"
+                src="{{ asset('img/oneworks-avatar-cat-256.svg') }}"
+                alt="Foto profil Fayyaza"
+              />
               <div>
-                <b>Firdaus Asykar</b>
-                <span>Member aktif</span>
+                <b>Rafli Fayyaza</b>
+                <span>Member</span>
               </div>
             </div>
           </div>
@@ -361,10 +369,38 @@
               </p>
             </blockquote>
             <div class="review-author">
-              <span class="avatar" aria-hidden="true">AP</span>
+              <img
+                class="avatar"
+                src="{{ asset('img/oneworks-avatar-cat-256.svg') }}"
+                alt="Foto profil Adam Mali Putra"
+              />
               <div>
                 <b>Adam Mali Putra</b>
-                <span>Member sejak 2024</span>
+                <span>Member</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal" style="--delay: .24s">
+            <div class="stars" aria-label="Rating 5 dari 5">
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+            </div>
+            <blockquote>
+              <p>
+                Suasananya nyaman dan pelatihnya selalu membantu memperbaiki gerakan. Sekarang
+                latihan jadi lebih rutin dan saya makin semangat mencapai target kebugaran.
+              </p>
+            </blockquote>
+            <div class="review-author">
+              <img
+                class="avatar"
+                src="{{ asset('img/oneworks-avatar-cat-256.svg') }}"
+                alt="Foto profil Andre"
+              />
+              <div>
+                <b>Rusdi Andre</b>
+                <span>Member</span>
               </div>
             </div>
           </div>

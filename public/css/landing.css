@@ -819,16 +819,13 @@ section[id] {
     text-wrap: pretty;
 }
 
-.review-card--featured blockquote p {
-    font-size: 2.3rem;
-    line-height: 1.55;
-    font-weight: 500;
-}
-
 .stars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--star);
     font-size: 1.5rem;
-    letter-spacing: 0.25em;
+    line-height: 1;
 }
 
 .review-author {
@@ -839,17 +836,10 @@ section[id] {
 }
 
 .avatar {
-    display: grid;
-    place-items: center;
+    display: block;
     width: 5rem;
     height: 5rem;
-    border-radius: 1.4rem;
-    background: var(--accent);
-    color: var(--accent-ink);
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    font-weight: 800;
-    text-transform: uppercase;
+    object-fit: cover;
 }
 
 .review-author b {
@@ -1317,10 +1307,6 @@ section[id] {
 
     .review-card {
         padding: 2.4rem;
-    }
-
-    .review-card--featured blockquote p {
-        font-size: 1.9rem;
     }
 
     .footer .container {

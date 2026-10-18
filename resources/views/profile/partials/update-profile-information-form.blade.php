@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-            {{ __('Profile Information & Password') }}
+            {{ __('Informasi Profil & Kata Sandi') }}
         </h2>
 
         <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            {{ __('Update your profile information and password in one place.') }}
+            {{ __('Perbarui informasi profil dan kata sandi Anda di satu tempat.') }}
         </p>
     </header>
 
@@ -18,7 +18,7 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nama')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
@@ -31,16 +31,16 @@
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Your email address is unverified.') }}
+                        {{ __('Alamat email Anda belum diverifikasi.') }}
 
                         <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Click here to re-send the verification email.') }}
+                            {{ __('Klik di sini untuk mengirim ulang email verifikasi.') }}
                         </button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('A new verification link has been sent to your email address.') }}
+                            {{ __('Tautan verifikasi baru telah dikirim ke alamat email Anda.') }}
                         </p>
                     @endif
                 </div>
@@ -51,33 +51,33 @@
 
         <div>
             <h3 class="text-sm font-bold text-slate-900 dark:text-white">
-                {{ __('Change Password') }}
+                {{ __('Ubah Kata Sandi') }}
             </h3>
 
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                {{ __('Leave the fields below empty to keep your current password.') }}
+                {{ __('Kosongkan kolom di bawah ini jika ingin tetap menggunakan kata sandi saat ini.') }}
             </p>
         </div>
 
         <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" />
+            <x-input-label for="update_password_current_password" :value="__('Kata Sandi Saat Ini')" />
             <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
             <x-input-error class="mt-2" :messages="$errors->get('current_password')" />
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" />
+            <x-input-label for="update_password_password" :value="__('Kata Sandi Baru')" />
             <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error class="mt-2" :messages="$errors->get('password')" />
         </div>
 
         <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="update_password_password_confirmation" :value="__('Konfirmasi Kata Sandi')" />
             <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Simpan') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -86,7 +86,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Tersimpan.') }}</p>
             @endif
         </div>
     </form>
