@@ -141,10 +141,11 @@
                 <div>
                     <p class="text-sm font-bold text-brand-900 dark:text-brand-100">Scan QR kehadiran</p>
                     <p class="mt-1 max-w-xl text-sm text-brand-700 dark:text-brand-300">Gunakan kamera untuk check-in saat datang atau check-out saat selesai latihan.</p>
-                    <p data-scan-status class="mt-3 text-sm font-semibold text-slate-600 dark:text-slate-300">Kamera belum dimulai.</p>
+                    <p class="mt-2 max-w-xl text-xs text-brand-800 dark:text-brand-200">Saat diminta browser, pilih Izinkan untuk akses kamera. Jika izin pernah ditolak atau permintaan tidak muncul, ubah izin Kamera untuk situs ini di pengaturan browser.</p>
+                    <p data-scan-status aria-live="polite" class="mt-3 text-sm font-semibold text-slate-600 dark:text-slate-300">Kamera belum dimulai.</p>
                 </div>
                 <button type="button" data-start-scanner
-                        class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/25 transition hover:bg-brand-700">
+                        class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/25 transition hover:bg-brand-700 sm:w-auto">
                     <i class="fa-solid fa-camera"></i>
                     Buka Kamera
                 </button>
