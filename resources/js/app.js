@@ -145,17 +145,9 @@ document.querySelectorAll('[data-qr-scanner]').forEach((container) => {
         scanner = new Html5Qrcode(region.id);
         region.classList.remove('hidden');
         button.innerHTML = '<i class="fa-solid fa-stop"></i> Tutup Kamera';
-        status.textContent = 'Meminta izin kamera...';
+        status.textContent = 'Arahkan kamera ke QR gym.';
 
         try {
-            if (!window.isSecureContext) {
-                throw new Error('insecure-context');
-            }
-
-            if (!navigator.mediaDevices?.getUserMedia) {
-                throw new Error('camera-not-supported');
-            }
-
             await scanner.start(
                 { facingMode: 'environment' },
                 { fps: 10, qrbox: { width: 220, height: 220 } },
@@ -184,26 +176,11 @@ document.querySelectorAll('[data-qr-scanner]').forEach((container) => {
                 },
                 () => {},
             );
-            status.textContent = 'Arahkan kamera ke QR gym.';
         } catch (error) {
             scanner = null;
             region.classList.add('hidden');
             button.innerHTML = '<i class="fa-solid fa-camera"></i> Buka Kamera';
-            console.error('Gagal membuka kamera untuk scan kehadiran:', error);
-
-            if (error.message === 'insecure-context') {
-                status.textContent = 'Kamera hanya dapat digunakan melalui HTTPS atau localhost.';
-            } else if (error.message === 'camera-not-supported') {
-                status.textContent = 'Browser ini tidak mendukung akses kamera. Coba buka dashboard melalui browser terbaru.';
-            } else if (['NotAllowedError', 'PermissionDeniedError', 'SecurityError'].includes(error.name)) {
-                status.textContent = 'Izin kamera ditolak atau diblokir. Pilih Izinkan pada permintaan browser, atau aktifkan izin Kamera untuk situs ini di pengaturan browser.';
-            } else if (['NotFoundError', 'DevicesNotFoundError'].includes(error.name)) {
-                status.textContent = 'Kamera tidak ditemukan pada perangkat ini.';
-            } else if (['NotReadableError', 'TrackStartError'].includes(error.name)) {
-                status.textContent = 'Kamera sedang digunakan aplikasi lain. Tutup aplikasi tersebut lalu coba lagi.';
-            } else {
-                status.textContent = 'Kamera gagal dibuka. Periksa izin kamera di browser dan pastikan situs dibuka melalui HTTPS.';
-            }
+            status.textContent = 'Kamera tidak dapat dibuka. Izinkan akses kamera dan gunakan HTTPS atau localhost.';
         }
     });
 });
